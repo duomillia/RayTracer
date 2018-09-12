@@ -18,9 +18,9 @@ public class Driver {
 		
 		//System.out.println(MathUtils.getQuadraticSolution(1d, 5d, 5d));
 		
-		Sphere s = new Sphere(-120,0,0,5);
+		Sphere s = new Sphere(0,0,0,5);
 		
-		Ray r = new Ray(new Vector3(0,0,0), new Vector3(1,0,0));
+		Ray r = new Ray(new Vector3(-200,0,0), new Vector3(1,0,0));
 		
 		System.out.println (s.getNearestIntersectionToOrigin(r));
 		
