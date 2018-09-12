@@ -16,12 +16,13 @@ public class Driver {
 
 	public static void main(String[] args) {
 		
-		System.out.println(MathUtils.getQuadraticSolution(1d, 5d, 5d));
+		//System.out.println(MathUtils.getQuadraticSolution(1d, 5d, 5d));
 		
-		//Sphere s = new Sphere(0,0,0,100);
-		//Ray r = new Ray(new Vector3(101,0,0), new Vector3(-1,0,0));
+		Sphere s = new Sphere(-120,0,0,5);
 		
-		//System.out.println (s.getNearestIntersectionToOrigin(r));
+		Ray r = new Ray(new Vector3(0,0,0), new Vector3(1,0,0));
+		
+		System.out.println (s.getNearestIntersectionToOrigin(r));
 		
 		
 //		RayTracer rt = new RayTracer();

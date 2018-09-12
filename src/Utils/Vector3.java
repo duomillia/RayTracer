@@ -2,6 +2,11 @@ package Utils;
 
 import nodeTree.Ray;
 
+/**
+ * 
+ * @author ian@ianwheeler.ca
+ *
+ */
 public class Vector3 {
 	public static final Double INFINITY = Double.MAX_VALUE;
 	
@@ -16,6 +21,8 @@ public class Vector3 {
 		this.x = i;
 		this.y = j;
 		this.z = k;
+		
+		//this.normalise();
 	}
 
 	public Vector3(Double v) {
@@ -91,4 +98,14 @@ public class Vector3 {
 		return this.difference(v).getLength();
 	}
 
+	public Vector3 add(Vector3 v) {
+		return new Vector3 (this.x + v.x, this.y + v.y, this.z + v.z);
+	}
+
+	
+	public String toString()
+	{
+		return ("x=" + x + " y=" + y + " z=" +z);
+		
+	}
 }

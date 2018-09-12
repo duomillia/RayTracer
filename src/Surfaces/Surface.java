@@ -5,13 +5,15 @@ import java.awt.Color;
 public class Surface {
 
 	private Color color;
-	
+
 	public Surface(Color c) {
 		this.color = c;
 	}
 
 	public Color getColor() {
-		// TODO Auto-generated method stub
+		if (this.color == null) {
+			this.setColor(new Color(0, 0, 0));
+		}
 		return color;
 	}
 
@@ -21,7 +23,5 @@ public class Surface {
 	public void setColor(Color color) {
 		this.color = color;
 	}
-	
-	
-	
+
 }

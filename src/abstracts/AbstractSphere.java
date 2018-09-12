@@ -52,19 +52,26 @@ public class AbstractSphere extends Visible {
 	public Vector3 getNearestIntersectionToOrigin(Ray ray) {
 
 		Vector3 l = this.getCentre().difference(ray.getCentre());
-		double a = Vector3.ScalarProduct(this.getDirection(),
-				this.getDirection());
+		
+		double a = Vector3.ScalarProduct(ray.getDirection(),
+				ray.getDirection());
+		
+		
 		double b = 2 * Vector3.ScalarProduct(l, l);
+		
 		double c = Vector3.ScalarProduct(l, l) - this.getRadius()
 				* this.getRadius();
 
 		Double d = MathUtils.getQuadraticSolution(a, b, c);
 		
 		if (d == null || d == Double.NEGATIVE_INFINITY || d == Double.POSITIVE_INFINITY) {
+			System.out.println("no intersection, d =" + d);
 			return null;
 		}
 
-		Vector3 nearestPoint = null;
+		System.out.println("d="+d);
+		
+		Vector3 nearestPoint = ray.scale(d);
 
 		{
 			for (Positionable p : this.getChildren()) {
@@ -86,7 +93,7 @@ public class AbstractSphere extends Visible {
 		}
 		
 		if (nearestPoint != null) {
-			System.out.println ("A Hit! " + nearestPoint.toString());
+			System.out.println ("A Hit! d=" + d + " >"+ nearestPoint.toString());
 			ray.addColor (this.getSurface().getColor());
 		}
 		return nearestPoint;

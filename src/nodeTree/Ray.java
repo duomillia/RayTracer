@@ -15,14 +15,16 @@ public class Ray extends Positionable {
 
 	Vector3 direction = new Vector3();
 	Color color = null;
-	
+
 	/**
 	 * @return the color
 	 */
 	public Color getColor() {
+		if (this.color == null) {
+			this.setColor(new Color(0, 0, 0));
+		}
 		return color;
 	}
-
 
 	/**
 	 * @param color the color to set
@@ -31,14 +33,13 @@ public class Ray extends Positionable {
 		this.color = color;
 	}
 
-
 	public Ray(Vector3 centre, Vector3 direction) {
 		this.setCentre(centre);
 		this.setDirection(direction);
+		
 		this.getDirection().normalise();
 	}
 
-	
 	/**
 	 * @return the direction
 	 */
@@ -61,8 +62,7 @@ public class Ray extends Positionable {
 	}
 
 	/**
-	 * @param total_reflections
-	 *            the total_reflections to set
+	 * @param total_reflections the total_reflections to set
 	 */
 	public void setTotal_reflections(int total_reflections) {
 		this.total_reflections = total_reflections;
@@ -76,8 +76,7 @@ public class Ray extends Positionable {
 	}
 
 	/**
-	 * @param reflections_left
-	 *            the reflections_left to set
+	 * @param reflections_left the reflections_left to set
 	 */
 	public void setReflections_left(int reflections_left) {
 		this.reflections_left = reflections_left;
@@ -90,18 +89,20 @@ public class Ray extends Positionable {
 		}
 		return false;
 	}
-	
-	public Boolean isReflectionLeft()
-	{
+
+	public Boolean isReflectionLeft() {
 		return reflections_left > 0;
 	}
 
-
 	public void addColor(Color color) {
-		
-		this.setColor (ColorUtils.blend(this.getColor(), color));
-		
+
+		this.setColor(ColorUtils.blend(this.getColor(), color));
+
 	}
 
+	public Vector3 scale(Double d) {
+		
+		return this.getCentre().add(this.getDirection().scale(d));
+	}
 
 }
